@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Practice</title>
+    <meta charset="utf-8">
+    <style>
+        .block{
+            padding: 10px;
+            position: relative;
+        }
+        .header h1{
+            padding: 10px;
+        }
+        .title{
+            background-color: rgb(163, 194, 250);
+            color: rgb(73, 76, 243);
+            line-height: 40px;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .image{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 290px;
+            height: 290px;
+            z-index: 1;
+        }
+        .style1{
+            color: rgb(25, 25, 182);
+            font-weight: bold;
+        }
+        .tableinfor{
+            font-size: 20px;
+        }
+        .highlight{
+            color: rgb(12, 12, 247);
+            font-weight: bold;
+        }
+        .style2{
+            font-weight: bold;
+        }
+        .style3{
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Panic Cat</h1>
+    </div>
+    <div class="block">
+        <div class="title">About</div>
+        <div class="content">
+            <p>Mewwwwwwwwww!</p>
+            <p>Hello, I'm cat. I love <span class="highlight">User Interface Design</span>.</p>
+            <img src="/img/Cool.jpg" alt="Panic Cat" class="image">
+        </div>
+    </div>
+    <div class="block" class="tableinfor">
+        <div class="title">Course</div>
+        <div class="content">
+            <p>Here are some courses I've taken:</p>
+            <table border="1" width="450">
+                <tr>
+                    <td class="style2">Course Number</td>
+                    <td class="style2">Course Title</td>
+                    <td class="style2">Semester Taken</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="style3">For Credit</td>
+                </tr>
+                <tr>
+                    <td class="style1">6.813</td>
+                    <td class="highlight">User Interface Design</td>
+                    <td class="highlight">Spring 2014</td>
+                </tr>
+                <tr>
+                    <td class="style1">6.034</td>
+                    <td>Artificial Intelligence</td>
+                    <td>Fall 2013</td>
+                </tr>
+                <tr>
+                    <td class="style1">6.006</td>
+                    <td>Introduction to Algorithms</td>
+                    <td>Fall 2013</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="style3">Listener</td>
+                </tr>
+                <tr>
+                    <td>6.867</td>
+                    <td>Machine Learning</td>
+                    <td>Fall 2013</td>
+                </tr>
+                <tr>
+                    <td>6.830</td>
+                    <td>Database Systems</td>
+                    <td>Fall 2012</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="block">
+        <div class="title">Interests</div>
+        <div class="content">
+            <p>I am interested <span class="style2">HCI</span>, memes, and youtube videos</p>
+        </div>
+    </div>
+    <div class="block">
+        <div class="title">Submit Pet Information</div>
+        <div class="content">
+            <p>Would love to know what kinds of pets you 'own'(you'll never own me). Submit below!</p>
+            <form>
+                <label for="name">Name:</label>
+                <input type="text" id="name"><br>
+                <label for="phylum">Phylum:</label>
+                <input type="text" id="phylum" ><br>
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender"><br>
+                <input type="submit" name="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html> 
