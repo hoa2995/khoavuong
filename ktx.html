@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lí KTX</title>
+    <link rel="stylesheet" href="ktx.css">
+</head>
+<body>
+  <div class="header">
+    <h1>Hệ Thống Quản Lý KTX</h1>
+  </div>
+  
+  <div class="container">
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Tìm kiếm theo số phòng hoặc tòa nhà..." oninput="searchRooms()">
+      </div>
+      <button onclick="openAddRoom()">Thêm Phòng Mới</button>
+      <button onclick="filterRooms('all')">Tất Cả Phòng</button>
+      <button onclick="filterRooms('available')">Phòng Trống</button>
+      <button onclick="filterRooms('occupied')">Phòng Có Người</button>
+      <button onclick="showRegistrations()">Xem Đăng Ký</button>
+    </div>
+  
+    <div class="room-grid" id="roomGrid">
+      <!-- Rooms will be added here dynamically -->
+    </div>
+  
+    <div class="registrations-list" id="registrationsList" style="display: none;">
+      <h2>Danh Sách Đăng Ký</h2>
+      <div id="registrationsContainer">
+        <!-- Registrations will be listed here -->
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal" id="addRoomModal">
+    <div class="modal-content">
+      <h2>Thêm Phòng Mới</h2>
+      <form id="addRoomForm" onsubmit="addRoom(event)">
+        <div class="form-group">
+          <label>Số Phòng</label>
+          <input type="text" id="roomNumber" required>
+        </div>
+        <div class="form-group">
+          <label>Tòa Nhà</label>
+          <select id="roomType" required>
+            <!-- Buildings will be populated dynamically -->
+          </select>
+          <button type="button" onclick="openAddBuilding()" style="margin-top: 10px;">Thêm Tòa Nhà Mới</button>
+        </div>
+        <div class="form-group">
+          <label>Số Người Tối Đa</label>
+          <select id="maxOccupants" required>
+            <option value="4">4 người</option>
+            <option value="6">6 người</option>
+            <option value="8">8 người</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Giá/Học kỳ</label>
+          <input type="number" id="roomPrice" required>
+        </div>
+        <button type="submit">Thêm Phòng</button>
+        <button type="button" onclick="closeAddRoom()">Hủy</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="modal" id="addBuildingModal">
+    <div class="modal-content">
+      <h2>Thêm Tòa Nhà Mới</h2>
+      <form id="addBuildingForm" onsubmit="addBuilding(event)">
+        <div class="form-group">
+          <label>Tên Tòa Nhà</label>
+          <input type="text" id="buildingName" required placeholder="Ví dụ: D">
+        </div>
+        <button type="submit">Thêm Tòa Nhà</button>
+        <button type="button" onclick="closeAddBuilding()">Hủy</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="modal" id="registerModal">
+    <div class="modal-content register-modal">
+      <h2>Đăng Ký Phòng KTX</h2>
+      <div class="student-info">
+        <h3>Thông tin sinh viên</h3>
+        <form id="registerForm" onsubmit="submitRegistration(event)">
+          <div class="form-group">
+            <label>Họ và tên</label>
+            <input type="text" id="studentName" required>
+          </div>
+          <div class="form-group">
+            <label>MSSV</label>
+            <input type="text" id="studentId" required>
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại</label>
+            <input type="tel" id="studentPhone" required>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="studentEmail" required>
+          </div>
+          <div class="form-group">
+            <label>Khoa</label>
+            <input type="text" id="studentFaculty" required>
+          </div>
+          <button type="submit">Xác nhận đăng ký</button>
+          <button type="button" onclick="closeRegisterModal()">Hủy</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal" id="editStatusModal">
+    <div class="modal-content">
+      <h2>Chỉnh Sửa Trạng Thái Phòng</h2>
+      <form id="editStatusForm" onsubmit="updateRoomStatus(event)">
+        <div class="form-group">
+          <label>Trạng thái phòng</label>
+          <select id="roomStatus" required>
+            <option value="available">Còn trống</option>
+            <option value="occupied">Đã đủ người</option>
+            <option value="maintenance">Đang bảo trì</option>
+            <option value="repairs">Đang sửa chữa</option>
+            <option value="cleaning">Đang dọn dẹp</option>
+            <option value="damaged">Hỏng đồ đạc</option>
+          </select>
+        </div>
+        <button type="submit">Cập nhật</button>
+        <button type="button" onclick="closeEditStatus()">Hủy</button>
+      </form>
+    </div>
+  </div>
+  
+  <div class="modal" id="studentListModal">
+    <div class="modal-content">
+      <h2>Danh Sách Sinh Viên</h2>
+      <div id="studentListContainer">
+        <!-- Students will be listed here -->
+      </div>
+      <button type="button" onclick="closeStudentList()">Đóng</button>
+    </div>
+  </div>
+  
+</body>
+<script src="ktx.js"></script>
+</html>
